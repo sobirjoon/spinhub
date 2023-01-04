@@ -45,8 +45,8 @@ app.use((req, res, next) => {
 // Routes
 app.get('/', (req, res) => {
 
-    let endpointOne = 'http://localhost/spinhub/api/?random';
-    let endpointTwo = 'http://localhost/spinhub/api/?genres';
+    let endpointOne = 'https://spinapi.herokuapp.com/?random';
+    let endpointTwo = 'https://spinapi.herokuapp.com/?genres';
 
     const requestOne = axios.get(endpointOne);
     const requestTwo = axios.get(endpointTwo);
@@ -70,8 +70,8 @@ app.get('/', (req, res) => {
 app.get('/explore', (req, res) => {
     let id = req.body.genre_id;
 
-    let endpointOne = `http://localhost/spinhub/api/?albums`;
-    let endpointTwo = `http://localhost/spinhub/api/?genreid=8`;
+    let endpointOne = `https://spinapi.herokuapp.com/?albums`;
+    let endpointTwo = `https://spinapi.herokuapp.com/?genreid=8`;
 
     const requestOne = axios.get(endpointOne);
     const requestTwo = axios.get(endpointTwo);
@@ -109,7 +109,7 @@ app.get('/faqs', (req, res) => {
 
 // to get genres
 app.get('/genres', (req, res) => {
-    let endpoint = 'http://localhost/spinhub/api/?albums';
+    let endpoint = 'https://spinapi.herokuapp.com/?albums';
     console.log(endpoint);
 
     axios.get(endpoint).then(result => {
@@ -126,9 +126,9 @@ app.get('/genres', (req, res) => {
 // to get single album
 app.get('/album', (req, res) => {
     let id = req.query.id;
-    let endpointOne = `http://localhost/spinhub/api/?albumid=${id}`;
-    let endpointTwo = `http://localhost/spinhub/api/?reviewid=${id}`;
-    let endpointThree = `http://localhost/spinhub/api/?tracklist=${id}`;
+    let endpointOne = `https://spinapi.herokuapp.com/?albumid=${id}`;
+    let endpointTwo = `https://spinapi.herokuapp.com/?reviewid=${id}`;
+    let endpointThree = `https://spinapi.herokuapp.com/?tracklist=${id}`;
 
     const requestOne = axios.get(endpointOne);
     const requestTwo = axios.get(endpointTwo);
@@ -156,7 +156,7 @@ app.get('/album', (req, res) => {
 
 // to get random three albums
 app.get('/random', (req, res) => {
-    let endpoint = 'http://localhost/spinhub/api/?random';
+    let endpoint = 'https://spinapi.herokuapp.com/?random';
 
     axios.get(endpoint).then(result => {
 
@@ -172,7 +172,7 @@ app.get('/random', (req, res) => {
 // search
 app.post('/search', (req, res) => {
     let search = req.body.searchField;
-    let endpoint = `http://localhost/spinhub/api/?search=${search}`;
+    let endpoint = `https://spinapi.herokuapp.com/?search=${search}`;
 
     axios.get(endpoint).then(results => {
         let data = results.data;
@@ -187,7 +187,7 @@ app.post('/search', (req, res) => {
 // app.post('/filterbygenre', (req, res) => {
 //     let id = req.body.genre_id;
 
-//     let endpoint = `http://localhost/spinhub/api/?filter=${id}`;
+//     let endpoint = `https://spinapi.herokuapp.com/?filter=${id}`;
 
 //     axios.get(endpoint).then(results => {
 //         let data = results.data;
@@ -209,8 +209,8 @@ app.post('/filterbygenre', (req, res) => {
     }
 
 
-    let endpointOne = `http://localhost/spinhub/api/?filter=${id}`;
-    let endpointTwo = `http://localhost/spinhub/api/?genreid=${id}`;
+    let endpointOne = `https://spinapi.herokuapp.com/?filter=${id}`;
+    let endpointTwo = `https://spinapi.herokuapp.com/?genreid=${id}`;
 
     const requestOne = axios.get(endpointOne);
     const requestTwo = axios.get(endpointTwo);
@@ -233,7 +233,7 @@ app.post('/filterbygenre', (req, res) => {
 app.post('/sortbyaz', (req, res) => {
     let id = req.body.sortaz;
 
-    let endpoint = `http://localhost/spinhub/api/?az=${id}`;
+    let endpoint = `https://spinapi.herokuapp.com/?az=${id}`;
 
     axios.get(endpoint).then(results => {
         let data = results.data;
@@ -289,7 +289,7 @@ app.post('/signin', function (req, res) {
         status: status
     };
 
-    let endp = "http://localhost/spinhub/api/?login";
+    let endp = "https://spinapi.herokuapp.com/?login";
 
     axios.post(endp, userD, config).then((response) => {
         let access = response.data.access;
@@ -338,7 +338,7 @@ app.post('/signup', function (req, res) {
     }
 
 
-    let endpoint = "http://localhost/spinhub/api/?register";
+    let endpoint = "https://spinapi.herokuapp.com/?register";
 
     axios.post(endpoint, accountData, config).then((response) => {
         console.log(response.data);
@@ -351,7 +351,7 @@ app.get('/dashboard', (req, res) => {
     let mysession = req.session;
     if (mysession.auth) {
         let id = mysession.auth;
-        let getdata = `http://localhost/spinhub/api/?memberid=${id}`;
+        let getdata = `https://spinapi.herokuapp.com/?memberid=${id}`;
         axios.get(getdata).then(results => {
             let data = results.data;
             console.log(data);
@@ -371,7 +371,7 @@ app.get('/dashboard/profile', (req, res) => {
     let mysession = req.session;
     if (mysession.auth) {
         let id = mysession.auth;
-        let getdata = `http://localhost/spinhub/api/?memberid=${id}`;
+        let getdata = `https://spinapi.herokuapp.com/?memberid=${id}`;
         axios.get(getdata).then(results => {
             let data = results.data;
             console.log(data);
@@ -412,7 +412,7 @@ app.post('/dashboard/profile/update', (req, res) => {
             }
         }
 
-        let endpoint = `http://localhost/spinhub/api/?memberupdate`;
+        let endpoint = `https://spinapi.herokuapp.com/?memberupdate`;
 
         axios.post(endpoint, accountData, config).then((response) => {
             console.log(response.data);
@@ -427,8 +427,8 @@ app.get('/dashboard/members/', (req, res) => {
 
     let mysession = req.session;
     if (mysession.auth) {
-        let endpointOne = `http://localhost/spinhub/api/?memberlist`;
-        let endpointTwo = `http://localhost/spinhub/api/?albums`;
+        let endpointOne = `https://spinapi.herokuapp.com/?memberlist`;
+        let endpointTwo = `https://spinapi.herokuapp.com/?albums`;
 
         const requestOne = axios.get(endpointOne);
         const requestTwo = axios.get(endpointTwo);
@@ -460,8 +460,8 @@ app.get('/dashboard/members/:id', (req, res) => {
         let username = req.params.id;
         console.log(username);
 
-        let endpointOne = `http://localhost/spinhub/api/?memberlist`;
-        let endpointTwo = `http://localhost/spinhub/api/?memberalbums=${username}`;
+        let endpointOne = `https://spinapi.herokuapp.com/?memberlist`;
+        let endpointTwo = `https://spinapi.herokuapp.com/?memberalbums=${username}`;
 
         const requestOne = axios.get(endpointOne);
         const requestTwo = axios.get(endpointTwo);
@@ -490,7 +490,7 @@ app.get('/dashboard/manage', (req, res) => {
     let mysession = req.session;
     if (mysession.auth) {
         let userid = mysession.auth;
-        let endpoint = `http://localhost/spinhub/api/?myalbums=${userid}`;
+        let endpoint = `https://spinapi.herokuapp.com/?myalbums=${userid}`;
 
 
         axios.get(endpoint).then(result => {
@@ -539,7 +539,7 @@ app.post('/dashboard/manage/newalbum', (req, res) => {
             }
         }
 
-        let endpoint = "http://localhost/spinhub/api/?addalbum";
+        let endpoint = "https://spinapi.herokuapp.com/?addalbum";
 
         axios.post(endpoint, update, config).then((response) => {
             console.log(response.data);
@@ -571,7 +571,7 @@ app.post('/dashboard/manage/delete/:id', (req, res) => {
             }
         }
 
-        let endpoint = "http://localhost/spinhub/api/?deletealbum";
+        let endpoint = "https://spinapi.herokuapp.com/?deletealbum";
 
         axios.post(endpoint, update, config).then((response) => {
             let CRUD = response.data.message;
@@ -593,8 +593,8 @@ app.get('/dashboard/manage/update/:id', (req, res) => {
         userid = mysession.auth;
 
         // get single album data from two endpoints
-        let endpointOne = `http://localhost/spinhub/api/?myalbums=${userid}`;
-        let endpointTwo = `http://localhost/spinhub/api/?albumid=${album_id}`;
+        let endpointOne = `https://spinapi.herokuapp.com/?myalbums=${userid}`;
+        let endpointTwo = `https://spinapi.herokuapp.com/?albumid=${album_id}`;
 
         const requestOne = axios.get(endpointOne);
         const requestTwo = axios.get(endpointTwo);
@@ -645,7 +645,7 @@ app.post('/dashboard/manage/update', (req, res) => {
             }
         }
 
-        let endpoint = "http://localhost/spinhub/api/?updatealbum";
+        let endpoint = "https://spinapi.herokuapp.com/?updatealbum";
 
         axios.post(endpoint, update, config).then((response) => {
             console.log(response.data);
@@ -666,8 +666,8 @@ app.get('/dashboard/manage/addtracks/:id', (req, res) => {
         userid = mysession.auth;
 
         // get single album data from two endpoints
-        let endpointOne = `http://localhost/spinhub/api/?albumid=${album_id}`;
-        let endpointTwo = `http://localhost/spinhub/api/?tracklist=${album_id}`;
+        let endpointOne = `https://spinapi.herokuapp.com/?albumid=${album_id}`;
+        let endpointTwo = `https://spinapi.herokuapp.com/?tracklist=${album_id}`;
 
         const requestOne = axios.get(endpointOne);
         const requestTwo = axios.get(endpointTwo);
@@ -712,7 +712,7 @@ app.post('/dashboard/manage/addtracks/', (req, res) => {
             }
         }
 
-        let endpoint = "http://localhost/spinhub/api/?addtrack";
+        let endpoint = "https://spinapi.herokuapp.com/?addtrack";
 
         // iterate through values array and insert into database
         for (let i = 0; i < values.length; i++) {
@@ -745,7 +745,7 @@ app.get('/dashboard/manage/deletetrack/', (req, res) => {
         userid = mysession.auth;
 
         // get single album data from two endpoints
-        let endpointOne = `http://localhost/spinhub/api/?deletetrack=${id}`;
+        let endpointOne = `https://spinapi.herokuapp.com/?deletetrack=${id}`;
 
 
         const requestOne = axios.get(endpointOne);
@@ -774,8 +774,8 @@ app.get('/dashboard/newsletter', (req, res) => {
         userid = mysession.auth;
 
         // get newsletter data from two endpoints
-        let endpointOne = `http://localhost/spinhub/api/?newsletter`;
-        let endpointTwo = `http://localhost/spinhub/api/?myreviews=${userid}`;
+        let endpointOne = `https://spinapi.herokuapp.com/?newsletter`;
+        let endpointTwo = `https://spinapi.herokuapp.com/?myreviews=${userid}`;
 
         const requestOne = axios.get(endpointOne);
         const requestTwo = axios.get(endpointTwo);
@@ -808,7 +808,7 @@ app.post('/subscribe', (req, res) => {
         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
     }
 
-    let endpoint = "http://localhost/spinhub/api/?subscribe";
+    let endpoint = "https://spinapi.herokuapp.com/?subscribe";
 
     axios.post(endpoint, subscribe, config).then((response) => {
         console.log(response.data);
@@ -832,7 +832,7 @@ app.post('/dashboard/newsletter/delete/:id', (req, res) => {
             }
         }
 
-        let endpoint = "http://localhost/spinhub/api/?deletenewsletter";
+        let endpoint = "https://spinapi.herokuapp.com/?deletenewsletter";
 
         axios.post(endpoint, deleteNewsletter, config).then((response) => {
             console.log(response.data);
@@ -861,7 +861,7 @@ app.post('/dashboard/newsletter/reviews/delete/:id', (req, res) => {
             }
         }
 
-        let endpoint = "http://localhost/spinhub/api/?deletereview";
+        let endpoint = "https://spinapi.herokuapp.com/?deletereview";
 
         axios.post(endpoint, deleteReview, config).then((response) => {
             console.log(response.data);
@@ -879,7 +879,7 @@ app.get('/dashboard/reviews', (req, res) => {
 
     if (mysession.auth) {
         userid = mysession.auth;
-        let endpoint = `http://localhost/spinhub/api/?myreviews=${userid}`;
+        let endpoint = `https://spinapi.herokuapp.com/?myreviews=${userid}`;
 
         axios.get(endpoint).then((response) => {
             let reviews = response.data;
@@ -908,7 +908,7 @@ app.post('/dashboard/reviews/delete/:id', (req, res) => {
             }
         }
 
-        let endpoint = "http://localhost/spinhub/api/?deletereview";
+        let endpoint = "https://spinapi.herokuapp.com/?deletereview";
 
         axios.post(endpoint, deleteReview, config).then((response) => {
             console.log(response.data);
@@ -943,7 +943,7 @@ app.post('/postreview', function (req, res) {
             }
         }
 
-        let endpoint = "http://localhost/spinhub/api/?postreview";
+        let endpoint = "https://spinapi.herokuapp.com/?postreview";
 
         axios.post(endpoint, reviewdata, config).then((response) => {
             console.log(response.data);
@@ -977,7 +977,7 @@ app.post('/dashboard/changepassword', (req, res) => {
 
         }
 
-        let endpoint = "http://localhost/spinhub/api/?changepassword";
+        let endpoint = "https://spinapi.herokuapp.com/?changepassword";
 
         axios.post(endpoint, changepassword, config).then((response) => {
             console.log(response.data);
@@ -1005,7 +1005,7 @@ app.post('/dashboard/deleteaccount', (req, res) => {
             }
         }
 
-        let endpoint = "http://localhost/spinhub/api/?deleteaccount";
+        let endpoint = "https://spinapi.herokuapp.com/?deleteaccount";
 
         axios.post(endpoint, deleteAccount, config).then((response) => {
             console.log(response.data);
