@@ -1,0 +1,37 @@
+<div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 40%;">
+  <a href="/" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+    <svg class="bi pe-none me-2" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
+    <span class="fs-5 fw-semibold"><%= message2 %></span>
+  </a>
+  <div class="list-group list-group-flush border-bottom scrollarea">
+    <% reviews.forEach((row)=> { %>
+
+      <a href="/album?id=<%= row.album_id %>"  class="list-group-item list-group-item-action py-3 lh-sm" aria-current="true">
+        <div class="d-flex w-100 align-items-center justify-content-between">
+          <strong class="mb-1"><%= row.content %></strong>
+        </div>
+        <div class="col-10 mb-1 small"><p class="card-text">posted on album: <strong><%= row.album_title %></strong></p>
+          <p class="font-monospace">by <%= row.username %></p> </div>
+
+          <% if(status === 'admin') { %>
+          <div class="col-2 mb-1 small">
+            <form action="/dashboard/newsletter/reviews/delete/<%= row.id %>" method="POST">
+              <button type="submit" class="btn btn-outline-danger">Delete</button>
+            </form>
+          </div>
+          <% } %>
+
+          <% if(status === 'member') { %>
+            <div class="col-2 mb-1 small">
+              <form action="/dashboard/reviews/delete/<%= row.id %>" method="POST">
+                <button type="submit" class="btn btn-outline-danger">Delete</button>
+              </form>
+            </div>
+            <% } %>
+      </a>
+
+  <% }); %>
+
+  </div>
+</div>
+<div class="b-example-divider b-example-vr"></div>

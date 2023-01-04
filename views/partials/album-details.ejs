@@ -1,0 +1,29 @@
+<main>
+  <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-2">
+                    <% data.forEach((row)=> { %>
+                        <div class="card-group">
+                            <div class="card">
+                              <img src="<%= row.img_url %>" class="card-img-top" alt="...">
+                              <div class="card-body">
+                                <h5 class="card-title"><%= row.album_title %></h5>
+                                <p class="card-text"><strong>by </strong><%= row.artist %>.</p>
+                                <p class="font-monospace">Genre: <%= row.name %></p>
+                                <div class="button-group">
+                                    <a href="/album?id=<%= row.album_id %>" class="btn btn-sm btn-outline-secondary">View</a>
+                                    <% if (user) { %>
+                                    <a href="/dashboard/manage/update/<%= row.album_id %>" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                    <%}%>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                    <% }); %>
+            </div>
+        </div>
+    </div>
+
+
+
+</main>

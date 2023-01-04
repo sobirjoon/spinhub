@@ -1,0 +1,47 @@
+<div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 40%;">
+    <a href="/" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+      <svg class="bi pe-none me-2" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
+      <span class="fs-5 fw-semibold"></span>
+    </a>
+    <div class="container">
+
+    <h5><%= message2 %></h5>
+    <hr>
+
+    <form action="<%= action %>" method="POST">
+      <div class="mb-3">
+        <label for="album_title" class="form-label">Album Title</label>
+        <input type="text" class="form-control" id="album_title" name="album_title" placeholder="Album Title" value="<%= data2.album_title %>">
+      </div>
+      <div class="mb-3">
+        <label for="artist" class="form-label">Artist</label>
+        <input type="text" class="form-control" id="artist" name="artist" placeholder="Artist" value="<%= data2.artist %>">
+      </div>
+      <div class="mb-3">
+        <label for="genre" class="form-label">Genre</label>
+        <select class="form-select me-2" aria-label="Default select example" name="genre_id">
+            <option selected value="<%= data2.genre_id %>">Select genre</option>
+            <option value="1">Rock</option>
+            <option value="2">Electronic</option>
+            <option value="3">Pop</option>
+            <option value="4">Jazz</option>
+            <option value="5">Hip Hop</option>
+            <option value="6">Disco</option>
+            <option value="7">Classical</option>
+            <input type="hidden" name="genre_edit_id" value="<%= data2.genre_id %>">
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="year" class="form-label">Year</label>
+        <input type="text" class="form-control" id="year" name="year" placeholder="Year" value="<%= data2.year %>">
+      </div>
+      <div class="mb-3">
+        <label for="album_art" class="form-label">img_url</label>
+        <input type="text" class="form-control" id="album_art" name="img_url" placeholder="Album Art"value="<%= data2.img_url %>">
+      </div>
+      <input type="hidden" name="album_id" value="<%= data2.album_id %>">
+      <button type="submit" class="btn btn-primary"><%= crud %></button>
+    </form>
+
+
+</div>

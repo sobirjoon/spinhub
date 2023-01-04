@@ -1,0 +1,63 @@
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+          <img src="/favs/apple-touch-icon.png" alt="logo" width="20" height="20" class="d-inline-block align-text-top">
+          SPINHUB</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/explore">Explore</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/pricing">Pricing</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/faqs">FAQs</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/about">About</a>
+            </li>
+        </ul>
+      </div>
+
+        <!-- <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" action="search" method="POST">
+          <input type="search" name="searchField" class="form-control form-control-dark" placeholder="Search...by title or artist" aria-label="Search">
+          <script type="text/javascript">
+            $(document).ready(function() {
+             $("#input-search").keyup(function (e) {
+              var kc = e.keyCode || e.which;
+              if (kc == 13) {
+               $("#input-search").addClass("button-search");
+               window.location.href = "?search=" + this.value;
+              }
+             });
+            });
+           </script>
+        </form> -->
+
+        <div class="col-md-4 text-end">
+          <%if (user) { %>
+            <a href="/dashboard"><button type="button" class="btn btn-secondary">Dashboard</button></a>
+            <a href="/logout"><button type="button" class="btn btn-danger">Logout</button></a>
+          <% }
+          else { %>
+              <a href="/signin"><button type="button" class="btn btn-outline-light me-2">Login</button></a>
+              <a href="/signup"><button type="button" class="btn btn-primary">Sign-up</button></a>
+          <%}%>
+
+          </div>
+    </div>
+  </nav>
+</header>
+
+
