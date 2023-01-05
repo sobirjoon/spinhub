@@ -7,7 +7,6 @@ Link: https://spinhub.herokuapp.com/
 Credentials
 ------------------------------------------------------------
 userid          username          password        status
-------------------------------------------------------------
 1000            anna                123           'admin'
 1001            cyber               123           'member'
 1002            david               123
