@@ -1,4 +1,5 @@
-<h3>Spinhub</h3>
+Spinhub
+---------------------------------------------------------------------------------------
 
 This project website is developed as a part of Server-Side Web Development module.
 
