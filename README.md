@@ -4,19 +4,96 @@ This project website is developed as a part of Server-Side Web Development modul
 
 Link: https://spinhub.herokuapp.com/
 
-Credentials
-------------------------------------------------------------
-userid          username          password        status
-1000            anna                123           'admin'
-1001            cyber               123           'member'
-1002            david               123
-1003            emma                123
-1004            frank               123
-1005            gina                123
-1006            harry               123
-1007            isabella            123
-1008            james               123
-1009            kate                123
-1010            lisa                123
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
 
--------------------------------------------------------------
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+
+<table>
+  <tr>
+    <th>User ID</th>
+    <th>Username</th>
+    <th>Password</th>
+    <th>Status</th>
+  </tr>
+  <tr>
+    <td>1000</td>
+    <td>anna</td>
+    <td>123</td>
+    <td>admin</td>
+  </tr>
+  <tr>
+    <td>1001</td>
+    <td>cyber</td>
+    <td>123</td>
+    <td>member</td>
+  </tr>
+  <tr>
+    <td>1002</td>
+    <td>david</td>
+    <td>123</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>1003</td>
+    <td>emma</td>
+    <td>123</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>1004</td>
+    <td>frank</td>
+    <td>123</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>1005</td>
+    <td>gina</td>
+    <td>123</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>1006</td>
+    <td>harry</td>
+    <td>123</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>1007</td>
+    <td>isabella</td>
+    <td>123</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>1008</td>
+    <td>james</td>
+    <td>123</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>1009</td>
+    <td>kate</td>
+    <td>123</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>1010</td>
+    <td>lisa</td>
+    <td>123</td>
+    <td></td>
+  </tr>
+</table>
+
