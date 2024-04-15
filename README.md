@@ -5,6 +5,7 @@ This project website is developed as a part of Server-Side Web Development modul
 
 <p>Spinhub is a website or app that allows users to browse and search through vinyl record collections and reviews. The website/app has two user roles: anonymous users and members (registered users). Anonymous users can browse the data, search using a search bar, and filter the records by category. Members have additional functionality, such as the ability to create and edit their own vinyl collection and reviews, follow other users, and interact with the community through comments. The app also has an API to fetch data from MySQL database.</p>
 
+If you're visiting from my CV to view my website, please note that it's currently offline due to Heroku's shutdown. I'm in the process of deploying it elsewhere and it will be accessible as soon as possible. Thank you for your understanding.
 
 Link: https://spinhub.herokuapp.com/
 
