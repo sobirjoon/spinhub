@@ -1016,7 +1016,7 @@ app.post('/dashboard/deleteaccount', (req, res) => {
         res.redirect('/');
     }
 });
+app.listen(port, () => {
+    console.log(`Server is listening on http://localhost:${port}/`); // Log the actual port
+});
 
-
-app.listen(process.env.PORT || 3000);
-console.log('Server is listening on  localhost:3000/');
