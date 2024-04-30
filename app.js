@@ -45,8 +45,8 @@ app.use((req, res, next) => {
 // Routes
 app.get('/', (req, res) => {
 
-    let endpointOne = 'https://spinhubapi-production.up.railway.app/?random';
-    let endpointTwo = 'https://spinhubapi-production.up.railway.app/?genres';
+    let endpointOne = 'https://spinhubapi-d006a3b05a77.herokuapp.com/?random';
+    let endpointTwo = 'https://spinhubapi-d006a3b05a77.herokuapp.com/?genres';
 
     const requestOne = axios.get(endpointOne);
     const requestTwo = axios.get(endpointTwo);
@@ -70,8 +70,8 @@ app.get('/', (req, res) => {
 app.get('/explore', (req, res) => {
     let id = req.body.genre_id;
 
-    let endpointOne = `https://spinhubapi-production.up.railway.app/?albums`;
-    let endpointTwo = `https://spinhubapi-production.up.railway.app/?genreid=8`;
+    let endpointOne = `https://spinhubapi-d006a3b05a77.herokuapp.com/?albums`;
+    let endpointTwo = `https://spinhubapi-d006a3b05a77.herokuapp.com/?genreid=8`;
 
     const requestOne = axios.get(endpointOne);
     const requestTwo = axios.get(endpointTwo);
@@ -109,7 +109,7 @@ app.get('/faqs', (req, res) => {
 
 // to get genres
 app.get('/genres', (req, res) => {
-    let endpoint = 'https://spinhubapi-production.up.railway.app/?albums';
+    let endpoint = 'https://spinhubapi-d006a3b05a77.herokuapp.com/?albums';
     console.log(endpoint);
 
     axios.get(endpoint).then(result => {
@@ -126,9 +126,9 @@ app.get('/genres', (req, res) => {
 // to get single album
 app.get('/album', (req, res) => {
     let id = req.query.id;
-    let endpointOne = `https://spinhubapi-production.up.railway.app/?albumid=${id}`;
-    let endpointTwo = `https://spinhubapi-production.up.railway.app/?reviewid=${id}`;
-    let endpointThree = `https://spinhubapi-production.up.railway.app/?tracklist=${id}`;
+    let endpointOne = `https://spinhubapi-d006a3b05a77.herokuapp.com/?albumid=${id}`;
+    let endpointTwo = `https://spinhubapi-d006a3b05a77.herokuapp.com/?reviewid=${id}`;
+    let endpointThree = `https://spinhubapi-d006a3b05a77.herokuapp.com/?tracklist=${id}`;
 
     const requestOne = axios.get(endpointOne);
     const requestTwo = axios.get(endpointTwo);
@@ -156,7 +156,7 @@ app.get('/album', (req, res) => {
 
 // to get random three albums
 app.get('/random', (req, res) => {
-    let endpoint = 'https://spinhubapi-production.up.railway.app/?random';
+    let endpoint = 'https://spinhubapi-d006a3b05a77.herokuapp.com/?random';
 
     axios.get(endpoint).then(result => {
 
@@ -172,7 +172,7 @@ app.get('/random', (req, res) => {
 // search
 app.post('/search', (req, res) => {
     let search = req.body.searchField;
-    let endpoint = `https://spinhubapi-production.up.railway.app/?search=${search}`;
+    let endpoint = `https://spinhubapi-d006a3b05a77.herokuapp.com/?search=${search}`;
 
     axios.get(endpoint).then(results => {
         let data = results.data;
@@ -193,8 +193,8 @@ app.post('/filterbygenre', (req, res) => {
     }
 
 
-    let endpointOne = `https://spinhubapi-production.up.railway.app/?filter=${id}`;
-    let endpointTwo = `https://spinhubapi-production.up.railway.app/?genreid=${id}`;
+    let endpointOne = `https://spinhubapi-d006a3b05a77.herokuapp.com/?filter=${id}`;
+    let endpointTwo = `https://spinhubapi-d006a3b05a77.herokuapp.com/?genreid=${id}`;
 
     const requestOne = axios.get(endpointOne);
     const requestTwo = axios.get(endpointTwo);
@@ -217,7 +217,7 @@ app.post('/filterbygenre', (req, res) => {
 app.post('/sortbyaz', (req, res) => {
     let id = req.body.sortaz;
 
-    let endpoint = `https://spinhubapi-production.up.railway.app/?az=${id}`;
+    let endpoint = `https://spinhubapi-d006a3b05a77.herokuapp.com/?az=${id}`;
 
     axios.get(endpoint).then(results => {
         let data = results.data;
@@ -273,7 +273,7 @@ app.post('/signin', function (req, res) {
         status: status
     };
 
-    let endp = "https://spinhubapi-production.up.railway.app/?login";
+    let endp = "https://spinhubapi-d006a3b05a77.herokuapp.com/?login";
 
     axios.post(endp, userD, config).then((response) => {
         let access = response.data.access;
@@ -322,7 +322,7 @@ app.post('/signup', function (req, res) {
     }
 
 
-    let endpoint = "https://spinhubapi-production.up.railway.app/?register";
+    let endpoint = "https://spinhubapi-d006a3b05a77.herokuapp.com/?register";
 
     axios.post(endpoint, accountData, config).then((response) => {
         console.log(response.data);
@@ -335,7 +335,7 @@ app.get('/dashboard', (req, res) => {
     let mysession = req.session;
     if (mysession.auth) {
         let id = mysession.auth;
-        let getdata = `https://spinhubapi-production.up.railway.app/?memberid=${id}`;
+        let getdata = `https://spinhubapi-d006a3b05a77.herokuapp.com/?memberid=${id}`;
         axios.get(getdata).then(results => {
             let data = results.data;
             console.log(data);
@@ -355,7 +355,7 @@ app.get('/dashboard/profile', (req, res) => {
     let mysession = req.session;
     if (mysession.auth) {
         let id = mysession.auth;
-        let getdata = `https://spinhubapi-production.up.railway.app/?memberid=${id}`;
+        let getdata = `https://spinhubapi-d006a3b05a77.herokuapp.com/?memberid=${id}`;
         axios.get(getdata).then(results => {
             let data = results.data;
             console.log(data);
@@ -396,7 +396,7 @@ app.post('/dashboard/profile/update', (req, res) => {
             }
         }
 
-        let endpoint = `https://spinhubapi-production.up.railway.app/?memberupdate`;
+        let endpoint = `https://spinhubapi-d006a3b05a77.herokuapp.com/?memberupdate`;
 
         axios.post(endpoint, accountData, config).then((response) => {
             console.log(response.data);
@@ -411,8 +411,8 @@ app.get('/dashboard/members/', (req, res) => {
 
     let mysession = req.session;
     if (mysession.auth) {
-        let endpointOne = `https://spinhubapi-production.up.railway.app/?memberlist`;
-        let endpointTwo = `https://spinhubapi-production.up.railway.app/?albums`;
+        let endpointOne = `https://spinhubapi-d006a3b05a77.herokuapp.com/?memberlist`;
+        let endpointTwo = `https://spinhubapi-d006a3b05a77.herokuapp.com/?albums`;
 
         const requestOne = axios.get(endpointOne);
         const requestTwo = axios.get(endpointTwo);
@@ -444,8 +444,8 @@ app.get('/dashboard/members/:id', (req, res) => {
         let username = req.params.id;
         console.log(username);
 
-        let endpointOne = `https://spinhubapi-production.up.railway.app/?memberlist`;
-        let endpointTwo = `https://spinhubapi-production.up.railway.app/?memberalbums=${username}`;
+        let endpointOne = `https://spinhubapi-d006a3b05a77.herokuapp.com/?memberlist`;
+        let endpointTwo = `https://spinhubapi-d006a3b05a77.herokuapp.com/?memberalbums=${username}`;
 
         const requestOne = axios.get(endpointOne);
         const requestTwo = axios.get(endpointTwo);
@@ -474,7 +474,7 @@ app.get('/dashboard/manage', (req, res) => {
     let mysession = req.session;
     if (mysession.auth) {
         let userid = mysession.auth;
-        let endpoint = `https://spinhubapi-production.up.railway.app/?myalbums=${userid}`;
+        let endpoint = `https://spinhubapi-d006a3b05a77.herokuapp.com/?myalbums=${userid}`;
 
 
         axios.get(endpoint).then(result => {
@@ -523,7 +523,7 @@ app.post('/dashboard/manage/newalbum', (req, res) => {
             }
         }
 
-        let endpoint = "https://spinhubapi-production.up.railway.app/?addalbum";
+        let endpoint = "https://spinhubapi-d006a3b05a77.herokuapp.com/?addalbum";
 
         axios.post(endpoint, update, config).then((response) => {
             console.log(response.data);
@@ -555,7 +555,7 @@ app.post('/dashboard/manage/delete/:id', (req, res) => {
             }
         }
 
-        let endpoint = "https://spinhubapi-production.up.railway.app/?deletealbum";
+        let endpoint = "https://spinhubapi-d006a3b05a77.herokuapp.com/?deletealbum";
 
         axios.post(endpoint, update, config).then((response) => {
             let CRUD = response.data.message;
@@ -577,8 +577,8 @@ app.get('/dashboard/manage/update/:id', (req, res) => {
         userid = mysession.auth;
 
         // get single album data from two endpoints
-        let endpointOne = `https://spinhubapi-production.up.railway.app/?myalbums=${userid}`;
-        let endpointTwo = `https://spinhubapi-production.up.railway.app/?albumid=${album_id}`;
+        let endpointOne = `https://spinhubapi-d006a3b05a77.herokuapp.com/?myalbums=${userid}`;
+        let endpointTwo = `https://spinhubapi-d006a3b05a77.herokuapp.com/?albumid=${album_id}`;
 
         const requestOne = axios.get(endpointOne);
         const requestTwo = axios.get(endpointTwo);
@@ -629,7 +629,7 @@ app.post('/dashboard/manage/update', (req, res) => {
             }
         }
 
-        let endpoint = "https://spinhubapi-production.up.railway.app/?updatealbum";
+        let endpoint = "https://spinhubapi-d006a3b05a77.herokuapp.com/?updatealbum";
 
         axios.post(endpoint, update, config).then((response) => {
             console.log(response.data);
@@ -650,8 +650,8 @@ app.get('/dashboard/manage/addtracks/:id', (req, res) => {
         userid = mysession.auth;
 
         // get single album data from two endpoints
-        let endpointOne = `https://spinhubapi-production.up.railway.app/?albumid=${album_id}`;
-        let endpointTwo = `https://spinhubapi-production.up.railway.app/?tracklist=${album_id}`;
+        let endpointOne = `https://spinhubapi-d006a3b05a77.herokuapp.com/?albumid=${album_id}`;
+        let endpointTwo = `https://spinhubapi-d006a3b05a77.herokuapp.com/?tracklist=${album_id}`;
 
         const requestOne = axios.get(endpointOne);
         const requestTwo = axios.get(endpointTwo);
@@ -696,7 +696,7 @@ app.post('/dashboard/manage/addtracks/', (req, res) => {
             }
         }
 
-        let endpoint = "https://spinhubapi-production.up.railway.app/?addtrack";
+        let endpoint = "https://spinhubapi-d006a3b05a77.herokuapp.com/?addtrack";
 
         // iterate through values array and insert into database
         for (let i = 0; i < values.length; i++) {
@@ -729,7 +729,7 @@ app.get('/dashboard/manage/deletetrack/', (req, res) => {
         userid = mysession.auth;
 
         // get single album data from two endpoints
-        let endpointOne = `https://spinhubapi-production.up.railway.app/?deletetrack=${id}`;
+        let endpointOne = `https://spinhubapi-d006a3b05a77.herokuapp.com/?deletetrack=${id}`;
 
 
         const requestOne = axios.get(endpointOne);
@@ -758,8 +758,8 @@ app.get('/dashboard/newsletter', (req, res) => {
         userid = mysession.auth;
 
         // get newsletter data from two endpoints
-        let endpointOne = `https://spinhubapi-production.up.railway.app/?newsletter`;
-        let endpointTwo = `https://spinhubapi-production.up.railway.app/?myreviews=${userid}`;
+        let endpointOne = `https://spinhubapi-d006a3b05a77.herokuapp.com/?newsletter`;
+        let endpointTwo = `https://spinhubapi-d006a3b05a77.herokuapp.com/?myreviews=${userid}`;
 
         const requestOne = axios.get(endpointOne);
         const requestTwo = axios.get(endpointTwo);
@@ -792,7 +792,7 @@ app.post('/subscribe', (req, res) => {
         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
     }
 
-    let endpoint = "https://spinhubapi-production.up.railway.app/?subscribe";
+    let endpoint = "https://spinhubapi-d006a3b05a77.herokuapp.com/?subscribe";
 
     axios.post(endpoint, subscribe, config).then((response) => {
         console.log(response.data);
@@ -816,7 +816,7 @@ app.post('/dashboard/newsletter/delete/:id', (req, res) => {
             }
         }
 
-        let endpoint = "https://spinhubapi-production.up.railway.app/?deletenewsletter";
+        let endpoint = "https://spinhubapi-d006a3b05a77.herokuapp.com/?deletenewsletter";
 
         axios.post(endpoint, deleteNewsletter, config).then((response) => {
             console.log(response.data);
@@ -845,7 +845,7 @@ app.post('/dashboard/newsletter/reviews/delete/:id', (req, res) => {
             }
         }
 
-        let endpoint = "https://spinhubapi-production.up.railway.app/?deletereview";
+        let endpoint = "https://spinhubapi-d006a3b05a77.herokuapp.com/?deletereview";
 
         axios.post(endpoint, deleteReview, config).then((response) => {
             console.log(response.data);
@@ -863,7 +863,7 @@ app.get('/dashboard/reviews', (req, res) => {
 
     if (mysession.auth) {
         userid = mysession.auth;
-        let endpoint = `https://spinhubapi-production.up.railway.app/?myreviews=${userid}`;
+        let endpoint = `https://spinhubapi-d006a3b05a77.herokuapp.com/?myreviews=${userid}`;
 
         axios.get(endpoint).then((response) => {
             let reviews = response.data;
@@ -892,7 +892,7 @@ app.post('/dashboard/reviews/delete/:id', (req, res) => {
             }
         }
 
-        let endpoint = "https://spinhubapi-production.up.railway.app/?deletereview";
+        let endpoint = "https://spinhubapi-d006a3b05a77.herokuapp.com/?deletereview";
 
         axios.post(endpoint, deleteReview, config).then((response) => {
             console.log(response.data);
@@ -927,7 +927,7 @@ app.post('/postreview', function (req, res) {
             }
         }
 
-        let endpoint = "https://spinhubapi-production.up.railway.app/?postreview";
+        let endpoint = "https://spinhubapi-d006a3b05a77.herokuapp.com/?postreview";
 
         axios.post(endpoint, reviewdata, config).then((response) => {
             console.log(response.data);
@@ -961,7 +961,7 @@ app.post('/dashboard/changepassword', (req, res) => {
 
         }
 
-        let endpoint = "https://spinhubapi-production.up.railway.app/?changepassword";
+        let endpoint = "https://spinhubapi-d006a3b05a77.herokuapp.com/?changepassword";
 
         axios.post(endpoint, changepassword, config).then((response) => {
             console.log(response.data);
@@ -989,7 +989,7 @@ app.post('/dashboard/deleteaccount', (req, res) => {
             }
         }
 
-        let endpoint = "https://spinhubapi-production.up.railway.app/?deleteaccount";
+        let endpoint = "https://spinhubapi-d006a3b05a77.herokuapp.com/?deleteaccount";
 
         axios.post(endpoint, deleteAccount, config).then((response) => {
             console.log(response.data);
