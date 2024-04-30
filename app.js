@@ -137,19 +137,32 @@ app.get('/album', (req, res) => {
     // error handling
 
     axios.all([requestOne, requestTwo, requestThree])
-        .then(
-            axios.spread((...responses) => {
-                const data = responses[0].data;
-                const reviews = responses[1].data;
-                const tracklist = responses[2].data;
+        .then(axios.spread((...responses) => {
+            try {
+                // Ensuring all responses are valid
+                if (!responses.every(response => response && response.status === 200)) {
+                    throw new Error("One or more requests failed.");
+                }
+
+                let data = responses[0].data;
+                let reviews = responses[1].data;
+                let tracklist = responses[2].data;
+
+                // Logging the data to console (this could be removed in production)
                 console.log(data);
                 console.log(reviews);
                 console.log(tracklist);
+
+                // Rendering the response with the fetched data
                 res.render('album', { data, reviews, tracklist });
-            })
-        )
+            } catch (error) {
+                console.error("Error processing responses:", error);
+                res.status(500).send("Error while rendering the album page.");
+            }
+        }))
         .catch(err => {
             console.log("Error: ", err.message);
+            res.status(500).send("Server Error: " + err.message);
         });
 
 });
