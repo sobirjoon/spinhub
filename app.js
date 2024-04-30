@@ -125,46 +125,36 @@ app.get('/genres', (req, res) => {
 
 // to get single album
 app.get('/album', (req, res) => {
-    let id = req.query.id;
-    let endpointOne = `https://spinhubapi-production.up.railway.app/?albumid=${id}`;
-    let endpointTwo = `https://spinhubapi-production.up.railway.app/?reviewid=${id}`;
-    let endpointThree = `https://spinhubapi-production.up.railway.app/?tracklist=${id}`;
+    const id = req.query.id;
+    const baseUrl = 'https://spinhubapi-production.up.railway.app/';
 
-    const requestOne = axios.get(endpointOne);
-    const requestTwo = axios.get(endpointTwo);
-    const requestThree = axios.get(endpointThree);
+    const requests = [
+        axios.get(`${baseUrl}?albumid=${id}`),
+        axios.get(`${baseUrl}?reviewid=${id}`),
+        axios.get(`${baseUrl}?tracklist=${id}`)
+    ];
 
-    // error handling
-
-    axios.all([requestOne, requestTwo, requestThree])
-        .then(axios.spread((...responses) => {
-            try {
-                // Ensuring all responses are valid
-                if (!responses.every(response => response && response.status === 200)) {
-                    throw new Error("One or more requests failed.");
-                }
-
-                let data = responses[0].data;
-                let reviews = responses[1].data;
-                let tracklist = responses[2].data;
-
-                // Logging the data to console (this could be removed in production)
-                console.log(data);
-                console.log(reviews);
-                console.log(tracklist);
-
-                // Rendering the response with the fetched data
-                res.render('album', { data, reviews, tracklist });
-            } catch (error) {
-                console.error("Error processing responses:", error);
-                res.status(500).send("Error while rendering the album page.");
+    axios.all(requests)
+        .then(axios.spread((albumResponse, reviewResponse, tracklistResponse) => {
+            // Check for valid response status for all requests
+            if ([albumResponse, reviewResponse, tracklistResponse].some(response => response.status !== 200)) {
+                throw new Error("Failed to fetch all data.");
             }
-        }))
-        .catch(err => {
-            console.log("Error: ", err.message);
-            res.status(500).send("Server Error: " + err.message);
-        });
 
+            const albumData = albumResponse.data;
+            const reviews = reviewResponse.data;
+            const tracklist = tracklistResponse.data;
+
+            res.render('album', {
+                data: albumData,
+                reviews: reviews,
+                tracklist: tracklist
+            });
+        }))
+        .catch(error => {
+            console.error("Error while fetching data from API:", error);
+            res.status(500).send("Server Error: Unable to retrieve album details.");
+        });
 });
 
 // to get random three albums
