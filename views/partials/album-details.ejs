@@ -11,7 +11,7 @@
                                 <p class="card-text"><strong>by </strong><%= row.artist %>.</p>
                                 <p class="font-monospace">Genre: <%= row.name %></p>
                                 <div class="button-group">
-                                    <a href="/album/<%= row.album_id %>" class="btn btn-sm btn-outline-secondary">View</a>
+                                    <a href="/album?id=<%= row.album_id %>" class="btn btn-sm btn-outline-secondary">View</a>
                                     <% if (user) { %>
                                     <a href="/dashboard/manage/update/<%= row.album_id %>" class="btn btn-sm btn-outline-secondary">Edit</a>
                                     <%}%>
