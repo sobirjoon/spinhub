@@ -183,22 +183,6 @@ app.post('/search', (req, res) => {
         });
 });
 
-// // filter by genre
-// app.post('/filterbygenre', (req, res) => {
-//     let id = req.body.genre_id;
-
-//     let endpoint = `https://spinhubapi-production.up.railway.app/?filter=${id}`;
-
-//     axios.get(endpoint).then(results => {
-//         let data = results.data;
-//         console.log(data);
-//         res.render('explore', { data });
-//     })
-//         .catch(err => {
-//             console.log("Error: ", err.message);
-//         });
-// });
-
 // to get all albums from two endpoints
 app.post('/filterbygenre', (req, res) => {
     let id = req.body.genre_id;
